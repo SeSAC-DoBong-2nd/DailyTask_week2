@@ -38,8 +38,8 @@ class EmotionDiaryViewController: UIViewController {
     @IBOutlet var sadBtn: UIButton!
     @IBOutlet var sadBtnLabel: UILabel!
     
-    //    var btnClickCountArr = [0, 0, 0, 0, 0, 0, 0, 0, 0] :배열을 사용한 경우
-    var btnClickCounts: [Int: Int] = [:] // :딕셔너리를 사용한 경우 (key = 버튼의 tag, value = 클릭 횟수)
+    var btnClickCountArr = [0, 0, 0, 0, 0, 0, 0, 0, 0] //:배열을 사용한 경우
+//    var btnClickCounts: [Int: Int] = [:] // :딕셔너리를 사용한 경우 (key = 버튼의 tag, value = 클릭 횟수)
     
     
     override func viewDidLoad() {
@@ -50,6 +50,7 @@ class EmotionDiaryViewController: UIViewController {
         navLeftItem.image = UIImage(systemName: "list.triangle")
         navLeftItem.tintColor = .lightGray
         
+        setBtnClickCount()
         setUI()
     }
     
@@ -62,23 +63,45 @@ class EmotionDiaryViewController: UIViewController {
         
         let btnLabelCommentArr = ["행복해", "사랑해", "좋아해", "당황해", "속상해", "우울해", "심심해", "나른해", "슬퍼"]
         
+        let btnClickCountArr = btnClickCountArr
+        
         for index in 0..<btnImageArr.count {
             btnArr[index]?.tag = index
             btnArr[index]?.setImage(btnImageArr[index], for: .normal)
-            btnLabelArr[index]?.text = "\(btnLabelCommentArr[index]) 0"
+            btnLabelArr[index]?.text = "\(btnLabelCommentArr[index]) \(btnClickCountArr[index])"
             btnLabelArr[index]?.textAlignment = .center
         }
     }
     
     @IBAction
     func emotionBtnTapped(_ sender: UIButton) {
-        //        btnClickCountArr[sender.tag] += 1 // 배열을 사용
-        btnClickCounts[sender.tag, default: 0] += 1
+        btnClickCountArr[sender.tag] += 1 // 배열을 사용
+//        btnClickCounts[sender.tag, default: 0] += 1
         
         let btnLabelCommentArr = ["행복해", "사랑해", "좋아해", "당황해", "속상해", "우울해", "심심해", "나른해", "슬퍼"]
         let btnLabelArr = [happyBtnLabel, loveBtnLabel, likeBtnLabel, panicBtnLabel, upsetBtnLabel, depresseBtnLabel, boredBtnLabel, languidBtnLabel, sadBtnLabel]
         
-        btnLabelArr[sender.tag]?.text = "\(btnLabelCommentArr[sender.tag]) \(btnClickCounts[sender.tag]!)"
+        btnLabelArr[sender.tag]?.text = "\(btnLabelCommentArr[sender.tag]) \(btnClickCountArr[sender.tag])"
+        
+        //고차함수 map과 joined 이용하여 [Int] 타입 btnClickCountArr의 원소들을 문자열로 btnClickCountString에 저장
+        let btnClickCountString = btnClickCountArr.map { String($0) }.joined(separator: "")
+        
+        print(btnClickCountString)
+        saveBtnClickCount(btnClickCountString: btnClickCountString)
+    }
+    
+    //클릭한 버튼의 개수(문자열)를 UserDefaults 활용하여 "btnClickCountString" 키 값에 저장
+    func saveBtnClickCount(btnClickCountString: String) {
+        UserDefaults.standard.set(btnClickCountString, forKey: "btnClickCountString")
+    }
+    
+    //"btnClickCountString" 키 값에 저장된 값들을 불러와 ""이 아닐시 ""을 기준으로 나누는 split과 고차함수 map을 활용하여 self.btnClickCountArr에 값을 세팅
+    func setBtnClickCount() {
+        let btnClickCountString = UserDefaults.standard.string(forKey: "btnClickCountString") ?? ""
+        if btnClickCountString != "" {
+            self.btnClickCountArr = btnClickCountString.split(separator: "").map { Int($0) ?? 0 }
+        }
+        
     }
     
 }
