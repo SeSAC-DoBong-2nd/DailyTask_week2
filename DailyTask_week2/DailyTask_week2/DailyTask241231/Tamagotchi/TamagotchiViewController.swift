@@ -115,10 +115,13 @@ class TamagotchiViewController: UIViewController {
             i?.layer.borderWidth = 1
             i?.layer.borderColor = UIColor.primary241231.cgColor
         })
+        
         riceTextField.placeholder = "밥 주세용"
-        riceTextField.borderStyle = .none
         waterTextField.placeholder = "물 주세용"
-        waterTextField.borderStyle = .none
+        [riceTextField, waterTextField].forEach {i in
+            i?.borderStyle = .none
+            i?.keyboardType = .numberPad
+        }
         
         [riceButton, waterButton].forEach { i in
             i?.layer.borderWidth = 1
@@ -145,6 +148,11 @@ class TamagotchiViewController: UIViewController {
         ]
 
         return tamagotchiMessages.randomElement() ?? ""
+    }
+    
+    @IBAction
+    func keyboardDismiss(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     @IBAction
