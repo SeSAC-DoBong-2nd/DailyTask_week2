@@ -191,14 +191,14 @@
                     <connections>
                         <outlet property="bubbleImageView" destination="2s4-7t-jud" id="Urm-4q-Mcr"/>
                         <outlet property="bubbleLabel" destination="fOS-57-kPo" id="s5g-Zx-d1g"/>
-                        <outlet property="infoLabel" destination="uL5-tA-Rfy" id="i4d-pz-iOp"/>
+                        <outlet property="infoLabel" destination="uL5-tA-Rfy" id="mcF-LZ-KDa"/>
                         <outlet property="navItem" destination="SJJ-bC-RVh" id="k9A-2r-BPz"/>
                         <outlet property="navRightButton" destination="x0p-gX-9vv" id="D2M-5g-GOd"/>
                         <outlet property="riceButton" destination="6AH-CH-jVd" id="M1O-YG-Itg"/>
                         <outlet property="riceContainer" destination="O1F-D6-D7Q" id="qOP-BD-hFf"/>
                         <outlet property="riceTextField" destination="ShV-VO-Qyf" id="PZh-zl-JP2"/>
                         <outlet property="tamagotchiButton" destination="DdH-WA-WMK" id="L56-0d-byQ"/>
-                        <outlet property="tamagotchiImageView" destination="cIU-Vc-86w" id="XKN-GE-TeX"/>
+                        <outlet property="tamagotchiImageView" destination="cIU-Vc-86w" id="PgG-0k-40Y"/>
                         <outlet property="underLineView" destination="4OP-vD-Cnj" id="L48-Wj-yyY"/>
                         <outlet property="underLineView2" destination="ac0-EV-He8" id="97q-yG-Xre"/>
                         <outlet property="waterButton" destination="8DD-q2-0dG" id="VlP-c6-ShR"/>
@@ -209,7 +209,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="QM2-a1-1yW">
                     <connections>
-                        <action selector="keyboardDismiss:" destination="Y6W-OH-hqX" id="sL9-Nb-eYb"/>
+                        <action selector="keyboardDismiss:" destination="Y6W-OH-hqX" id="mjr-Sh-Sxz"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -257,7 +257,7 @@
                     <navigationItem key="navigationItem" id="t9r-eT-geB">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="Wa4-yg-Vl4">
                             <connections>
-                                <segue destination="LLO-0A-GdK" kind="unwind" unwindAction="unwindToPracticeViewController:" id="XI8-61-2c8"/>
+                                <segue destination="LLO-0A-GdK" kind="unwind" unwindAction="unwindToPracticeViewController:" id="OR1-F8-DLg"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" id="4HK-RG-koU">

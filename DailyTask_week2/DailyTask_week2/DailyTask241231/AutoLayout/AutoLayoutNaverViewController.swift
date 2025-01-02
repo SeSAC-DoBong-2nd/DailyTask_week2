@@ -58,7 +58,7 @@ class AutoLayoutNaverViewController: UIViewController {
         placeLabel.textColor = .lightGray
         placeLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         
-        payImage.image = .naverPay
+        payImage.image = ._4
         payImage.contentMode = .scaleAspectFill
         
         payCommentLabel.textAlignment = .center

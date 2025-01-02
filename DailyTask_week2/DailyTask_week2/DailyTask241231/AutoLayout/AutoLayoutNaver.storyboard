@@ -129,7 +129,6 @@
                                             <constraint firstItem="Syo-bV-0Ac" firstAttribute="leading" secondItem="WpG-NU-uzW" secondAttribute="leading" constant="10" id="L6X-mj-7dV"/>
                                             <constraint firstItem="PIe-IY-tcP" firstAttribute="height" secondItem="WpG-NU-uzW" secondAttribute="height" multiplier="0.7" id="LIx-57-72n"/>
                                             <constraint firstItem="Syo-bV-0Ac" firstAttribute="height" secondItem="WpG-NU-uzW" secondAttribute="height" id="S5G-tF-3LK"/>
-                                            <constraint firstAttribute="height" constant="30" id="Ye9-CS-Iuc"/>
                                             <constraint firstItem="PIe-IY-tcP" firstAttribute="leading" secondItem="Syo-bV-0Ac" secondAttribute="trailing" constant="10" id="vjE-3U-NEB"/>
                                             <constraint firstAttribute="trailing" secondItem="PIe-IY-tcP" secondAttribute="trailing" constant="10" id="vnU-gf-W6Y"/>
                                         </constraints>
