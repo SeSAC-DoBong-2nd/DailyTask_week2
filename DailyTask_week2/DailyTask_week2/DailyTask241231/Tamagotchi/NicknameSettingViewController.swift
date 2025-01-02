@@ -65,11 +65,13 @@ class NicknameSettingViewController: UIViewController {
             let alert = TamagotchiUtil.showAlert(title: "실패", message: "2글자 이상 6글자 이하로 작성해주세요!")
             present(alert, animated: true)
         } else {
+            navItem.title = "\(nicknameTextField.text ?? "")님 이름 정하기"
             UserDefaults.standard.set(text, forKey: "nickname")
             let alert = TamagotchiUtil.showAlert(title: "성공", message: "닉네임이 성공적으로 저장되었습니다!")
             present(alert, animated: true)
             
         }
+        
     }
 }
 
