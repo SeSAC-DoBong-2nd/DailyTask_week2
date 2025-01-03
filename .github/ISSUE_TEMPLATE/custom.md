@@ -1,9 +1,9 @@
 ---
 name: Custom issue template
 about: Describe this issue template's purpose here.
-title: ''
+title: "[Prefix] DailyTask [년월일]"
 labels: ''
-assignees: ''
+assignees: ParkSY0919
 
 ---
 
