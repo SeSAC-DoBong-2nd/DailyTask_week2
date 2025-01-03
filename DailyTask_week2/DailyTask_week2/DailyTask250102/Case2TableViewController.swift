@@ -59,12 +59,11 @@ class Case2TableViewController: UITableViewController {
         cell.textLabel?.font = UIFont.systemFont(ofSize: 12, weight: .light)
         cell.backgroundColor = .black
         
-        print(#function, indexPath)
         return cell
     }
     
 }
 
-/** 질문
- 1. 섹션 헤더 title의 색상은 어떻게 설정해주나요?
+/** 추후 알아볼 것
+ 1. 섹션 헤더 title의 색상과 폰트 설정은 어떻게 하는지
  **/
