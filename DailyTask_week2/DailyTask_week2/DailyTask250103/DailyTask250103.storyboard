@@ -165,7 +165,49 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nrO-pW-2Ov" id="KiO-x2-UNo">
                                     <rect key="frame" x="0.0" y="0.0" width="353" height="131"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sV7-lk-lyq">
+                                            <rect key="frame" x="10" y="10" width="333" height="111"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bm9-sK-c6a">
+                                                    <rect key="frame" x="50" y="45.333333333333336" width="233" height="20.333333333333336"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHl-Nl-09f">
+                                                    <rect key="frame" x="288" y="5" width="40" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="18A-So-iZz"/>
+                                                        <constraint firstAttribute="width" constant="40" id="oYa-sy-e6k"/>
+                                                    </constraints>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="Bm9-sK-c6a" firstAttribute="centerX" secondItem="sV7-lk-lyq" secondAttribute="centerX" id="EMJ-0R-hak"/>
+                                                <constraint firstItem="Bm9-sK-c6a" firstAttribute="centerY" secondItem="sV7-lk-lyq" secondAttribute="centerY" id="NrY-IQ-hPS"/>
+                                                <constraint firstItem="Bm9-sK-c6a" firstAttribute="leading" secondItem="sV7-lk-lyq" secondAttribute="leading" constant="50" id="ZVf-HT-uB7"/>
+                                                <constraint firstAttribute="trailing" secondItem="AHl-Nl-09f" secondAttribute="trailing" constant="5" id="fnm-p5-z5F"/>
+                                                <constraint firstAttribute="trailing" secondItem="Bm9-sK-c6a" secondAttribute="trailing" constant="50" id="uMf-vm-rnA"/>
+                                                <constraint firstItem="AHl-Nl-09f" firstAttribute="top" secondItem="sV7-lk-lyq" secondAttribute="top" constant="5" id="xop-U0-t52"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="sV7-lk-lyq" secondAttribute="bottom" constant="10" id="4PI-71-tjC"/>
+                                        <constraint firstAttribute="trailing" secondItem="sV7-lk-lyq" secondAttribute="trailing" constant="10" id="JU0-e2-2bR"/>
+                                        <constraint firstItem="sV7-lk-lyq" firstAttribute="leading" secondItem="KiO-x2-UNo" secondAttribute="leading" constant="10" id="URr-r1-oE0"/>
+                                        <constraint firstItem="sV7-lk-lyq" firstAttribute="top" secondItem="KiO-x2-UNo" secondAttribute="top" constant="10" id="lbS-5D-hz0"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="adBackgroundView" destination="sV7-lk-lyq" id="YaT-bD-YAo"/>
+                                    <outlet property="adButton" destination="AHl-Nl-09f" id="nAZ-cE-zIr"/>
+                                    <outlet property="adTitleLabel" destination="Bm9-sK-c6a" id="fGl-Ix-kZI"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

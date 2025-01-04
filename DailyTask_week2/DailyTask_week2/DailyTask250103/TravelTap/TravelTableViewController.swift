@@ -61,6 +61,27 @@ class TravelTableViewController: UITableViewController {
         
     }
     
+    func setAdCellUI(cell: AdTableViewCell) {
+        let titleTextArr = ["하와이 여행을 가고 싶다면? 수업이 있는데 떠나실 생각은 아니시죠?", "도쿄 여행 예약은? Xcode로 직접 만드시면 되겠네요!"].randomElement() ?? "adTitleLabel error"
+        cell.adTitleLabel.text = titleTextArr
+        cell.adTitleLabel.font = .systemFont(ofSize: 14, weight: .heavy)
+        cell.adTitleLabel.textAlignment = .center
+        cell.adTitleLabel.numberOfLines = 2
+        
+        let backgroundColor = [UIColor(resource: .adBackground1), UIColor(resource: .adBackground2)].randomElement() ?? .blue
+        cell.adBackgroundView.backgroundColor = backgroundColor
+        cell.adBackgroundView.layer.cornerRadius = 10
+        cell.adBackgroundView.layer.borderWidth = 0
+        
+        cell.adButton.setTitle("AD", for: .normal)
+        cell.adButton.titleLabel?.font = .systemFont(ofSize: 10)
+        cell.adButton.setTitleColor(.black, for: .normal)
+        cell.adButton.backgroundColor = .white
+        cell.adButton.layer.cornerRadius = 8
+        cell.adButton.layer.borderWidth = 0
+        cell.adButton.isUserInteractionEnabled = false //인터렉션 잠금
+    }
+    
     func calculatorStar(grade: Double) -> String {
         let num = round(grade) //소수점 반올림
         switch num {
@@ -88,7 +109,7 @@ class TravelTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let isAd = travelList[indexPath.row].ad
         if isAd {
-            return 60
+            return 110
         } else {
             return 140
         }
@@ -119,8 +140,7 @@ class TravelTableViewController: UITableViewController {
         setTravelCellUI(cell: travelCell, image: image, titleText: titleText, subtitleText: subtitleText, grade: grade, likeImage: likeImage, save: save)
         
         //AdCell 관련
-        
-        
+        setAdCellUI(cell: adCell)
         
         
         let isAd = travelRow.ad ? true : false
