@@ -8,6 +8,7 @@
 import UIKit
 
 import Kingfisher
+import SafariServices
 
 class MagazineTableViewController: UITableViewController {
     
@@ -80,6 +81,23 @@ class MagazineTableViewController: UITableViewController {
         setMagazineCellUI(cell: magazineCell, image: posterImage, title: title, subtitle: subtitle, date: date)
         
         return magazineCell
+    }
+    
+    //cell 클릭 시
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let link = magazineList[indexPath.row].link
+        // URL(string: ) type이 String? 이기에 옵셔널 제거
+        guard let url = URL(string: link) else { return }
+        
+        //웹 링크로 연결해야 하기에 SFSafariViewController 사용
+        let safariVC = SFSafariViewController(url: url)
+        //safariVC modal style 설정
+        safariVC.modalPresentationStyle = .pageSheet
+        //화면 이동
+        present(safariVC, animated: true, completion: nil)
+        
+        //model이 닫히고 화면이 돌아왔을 때 tableView focus된 배경색 제거
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
