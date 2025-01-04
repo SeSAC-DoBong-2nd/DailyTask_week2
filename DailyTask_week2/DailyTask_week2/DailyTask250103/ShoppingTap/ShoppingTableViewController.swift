@@ -15,14 +15,14 @@ class ShoppingTableViewController: UITableViewController {
         }
     }
     
+    //현재 textField에 입력된 글자를 저장 받을 변수
     var currentTextFieldText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func setShoppingHeaderCell
-    (cell: ShoppingTableViewHeaderCell) {
+    func setShoppingHeaderCell(cell: ShoppingTableViewHeaderCell) {
         cell.contentView.backgroundColor = .background0103
         
         cell.shoppingTextField.placeholder = "무엇을 구매하실 건가요?"
@@ -34,7 +34,10 @@ class ShoppingTableViewController: UITableViewController {
         cell.addButton.setTitleColor(.black, for: .normal)
     }
     
-    func setShoppingMainCell(cell: ShoppingTableViewCell, checkImage: String, starImage: String) {
+    func setShoppingMainCell(cell: ShoppingTableViewCell,
+                             checkImage: String,
+                             starImage: String)
+    {
         cell.contentView.backgroundColor = .background0103
         
         cell.checkButton.setImage(UIImage(systemName: checkImage), for: .normal)
@@ -49,8 +52,11 @@ class ShoppingTableViewController: UITableViewController {
     
     @objc
     func addButtonTapped(_ sender: UIButton) {
-        print(#function, sender.tag)
-        shoppingList.append(ShoppingToDoModel(isChecked: false, shoppingToDo: currentTextFieldText, isStared: false))
+        shoppingList.append(
+            ShoppingToDoModel(isChecked: false,
+                              shoppingToDo: currentTextFieldText,
+                              isStared: false)
+        )
     }
     
     @objc
@@ -99,20 +105,16 @@ class ShoppingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewHeaderCell") as! ShoppingTableViewHeaderCell
         setShoppingHeaderCell(cell: headerCell)
-        headerCell.addButton.tag = indexPath[0]
         headerCell.addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         
         let mainCell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell") as! ShoppingTableViewCell
-        let checkStateImage = shoppingList[indexPath.row].isChecked ? "checkmark.square.fill" :
-        "checkmark.square"
-        let starStateImage = shoppingList[indexPath.row].isStared ? "star.fill" :
-        "star"
+        let checkStateImage = shoppingList[indexPath.row].isChecked ?
+            "checkmark.square.fill" : "checkmark.square"
+        let starStateImage = shoppingList[indexPath.row].isStared ?
+            "star.fill" : "star"
         setShoppingMainCell(cell: mainCell, checkImage: checkStateImage, starImage: starStateImage)
         
-        
-        mainCell.checkButton.setImage(UIImage(systemName: checkStateImage), for: .normal)
-        
-        
+        //section별 다른 Cell을 return 하고자 switch 사용
         switch indexPath.section {
         case 0:
             return headerCell
@@ -131,9 +133,14 @@ class ShoppingTableViewController: UITableViewController {
         
     }
     
+    //우측 스와이프 관련 함수
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let delete = UIContextualAction(style: .normal, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+        let delete = UIContextualAction(style: .normal, title: nil) { (
+            UIContextualAction,
+            UIView,
+            success: @escaping (Bool) -> Void
+        ) in
             self.shoppingList.remove(at: indexPath.row)
             print("delete 실행 완료")
             success(true)
