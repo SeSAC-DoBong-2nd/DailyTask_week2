@@ -9,11 +9,13 @@ import UIKit
 
 class ShoppingTableViewController: UITableViewController {
     
-    var shoppingList = ["그립톡 구매하기", "사이다 구매", "아이패드 케이스 최저가 알아보기", "양말"] {
+    var shoppingList: [ShoppingToDoModel] = shoppingToDoDummy {
         didSet {
             tableView.reloadData()
         }
     }
+    
+    var currentTextFieldText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,22 +34,35 @@ class ShoppingTableViewController: UITableViewController {
         cell.addButton.setTitleColor(.black, for: .normal)
     }
     
-    func setShoppingMainCell(cell: ShoppingTableViewCell) {
+    func setShoppingMainCell(cell: ShoppingTableViewCell, checkImage: String, starImage: String) {
         cell.contentView.backgroundColor = .background0103
         
-        cell.checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        cell.checkButton.setImage(UIImage(systemName: checkImage), for: .normal)
         cell.checkButton.tintColor = .black
         
         cell.shoppingLabel.font = .systemFont(ofSize: 14, weight: .medium)
         cell.shoppingLabel.textAlignment = .left
         
-        cell.starButton.setImage(UIImage(systemName: "star"), for: .normal)
+        cell.starButton.setImage(UIImage(systemName: starImage), for: .normal)
         cell.starButton.tintColor = .black
     }
     
     @objc
     func addButtonTapped(_ sender: UIButton) {
         print(#function, sender.tag)
+        shoppingList.append(ShoppingToDoModel(isChecked: false, shoppingToDo: currentTextFieldText, isStared: false))
+    }
+    
+    @objc
+    func checkButtonTapped(_ sender: UIButton) {
+        print(#function, sender.tag)
+        shoppingList[sender.tag].isChecked.toggle()
+    }
+    
+    @objc
+    func starButtonTapped(_ sender: UIButton) {
+        print(#function, sender.tag)
+        shoppingList[sender.tag].isStared.toggle()
     }
     
     
@@ -88,13 +103,27 @@ class ShoppingTableViewController: UITableViewController {
         headerCell.addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         
         let mainCell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell") as! ShoppingTableViewCell
-        setShoppingMainCell(cell: mainCell)
+        let checkStateImage = shoppingList[indexPath.row].isChecked ? "checkmark.square.fill" :
+        "checkmark.square"
+        let starStateImage = shoppingList[indexPath.row].isStared ? "star.fill" :
+        "star"
+        setShoppingMainCell(cell: mainCell, checkImage: checkStateImage, starImage: starStateImage)
+        
+        
+        mainCell.checkButton.setImage(UIImage(systemName: checkStateImage), for: .normal)
+        
         
         switch indexPath.section {
         case 0:
             return headerCell
         case 1:
-            mainCell.shoppingLabel.text = shoppingList[indexPath.row]
+            mainCell.shoppingLabel.text = shoppingList[indexPath.row].shoppingToDo
+            mainCell.checkButton.tag = indexPath.row
+            mainCell.checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
+            
+            mainCell.starButton.tag = indexPath.row
+            mainCell.starButton.addTarget(self, action: #selector(starButtonTapped), for: .touchUpInside)
+            
             return mainCell
         default:
             return UITableViewCell()
@@ -116,16 +145,11 @@ class ShoppingTableViewController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [delete])
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(#function, indexPath.row)
-//        
-//        tableView.reloadData()
-//    }
-    
     //HeaderCell textField 액션 함수
     @IBAction
     func shoppingTextFieldEditingChanged(_ sender: UITextField) {
         print(#function)
+        self.currentTextFieldText = sender.text ?? "허걱"
     }
     
 }
