@@ -9,6 +9,9 @@ import UIKit
 
 class MagazineTableViewCell: UITableViewCell {
 
+    @IBOutlet var posterImageView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var subtitleLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
     
-
 }
