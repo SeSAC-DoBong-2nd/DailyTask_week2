@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eb3-NW-luX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y2t-YN-v8H">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -82,7 +83,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bGu-Wn-TqN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2603.8167938931297" y="-847.18309859154931"/>
+            <point key="canvasLocation" x="3530.5343511450378" y="-847.18309859154931"/>
         </scene>
         <!--도시 상세 정보-->
         <scene sceneID="k3L-9V-f3G">
@@ -219,7 +220,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tGr-BX-wxk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3359.5419847328244" y="-158.45070422535213"/>
+            <point key="canvasLocation" x="4286.259541984733" y="-158.45070422535213"/>
         </scene>
         <!--쇼핑-->
         <scene sceneID="JJi-7M-5iA">
@@ -322,12 +323,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ude-2X-v0G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604" y="537"/>
+            <point key="canvasLocation" x="3530.5343511450378" y="536.61971830985919"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Shopping-->
         <scene sceneID="evY-jk-OED">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ecp-RK-UIa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shopping" image="bag.fill" catalog="system" id="DnD-pR-3jK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="has-WR-mYd">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -340,12 +342,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRH-Ss-pAq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1679" y="537"/>
+            <point key="canvasLocation" x="2605.3435114503814" y="536.61971830985919"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Magazine-->
         <scene sceneID="t56-Km-l1H">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ruP-DN-SAz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Magazine" image="rectangle.and.text.magnifyingglass.rtl" catalog="system" id="e6y-Lg-OGl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hB2-OC-3qM">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -358,7 +361,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFA-xf-6nx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1678.6259541984732" y="-847.18309859154931"/>
+            <point key="canvasLocation" x="2605.3435114503814" y="-847.18309859154931"/>
         </scene>
         <!--인기 도시-->
         <scene sceneID="wbd-s9-c04">
@@ -395,12 +398,13 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2543" y="-158"/>
+            <point key="canvasLocation" x="3469.4656488549617" y="-158.45070422535213"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Travel-->
         <scene sceneID="jNT-dE-7ax">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eb3-NW-luX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Travel" image="airplane.departure" catalog="system" id="HGY-Ks-s9j"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pgT-By-0h5">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -414,10 +418,37 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tla-IZ-Ebr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1679" y="-158"/>
+            <point key="canvasLocation" x="2605.3435114503814" y="-158.45070422535213"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="EUJ-OJ-3Eh">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="y2t-YN-v8H" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wbp-Z9-4kn">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="adBackground1"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ruP-DN-SAz" kind="relationship" relationship="viewControllers" id="cYR-v4-Qbl"/>
+                        <segue destination="Eb3-NW-luX" kind="relationship" relationship="viewControllers" id="QOD-yd-OF5"/>
+                        <segue destination="ecp-RK-UIa" kind="relationship" relationship="viewControllers" id="mn9-rO-F9E"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vJh-9T-TEf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1260" y="-184"/>
         </scene>
     </scenes>
     <resources>
+        <image name="airplane.departure" catalog="system" width="128" height="84"/>
+        <image name="bag.fill" catalog="system" width="128" height="128"/>
+        <image name="rectangle.and.text.magnifyingglass.rtl" catalog="system" width="128" height="90"/>
+        <namedColor name="adBackground1">
+            <color red="1" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
