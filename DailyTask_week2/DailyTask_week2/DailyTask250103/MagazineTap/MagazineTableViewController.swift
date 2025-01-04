@@ -35,14 +35,29 @@ class MagazineTableViewController: UITableViewController {
         cell.subtitleLabel.textColor = .black.withAlphaComponent(0.4)
         cell.subtitleLabel.textAlignment = .left
         
-        let format = DateFormatter()
-        format.dateFormat = "yy년 MM월 dd일"
-        let dateStr = format.date(from: date)
-        print("🔥 \(dateStr ?? Date())")
-        cell.dateLabel.text = "아직"
+        cell.dateLabel.text = convertMagazineDate(date: date)
         cell.dateLabel.font = .systemFont(ofSize: 10, weight: .regular)
         cell.dateLabel.textColor = .black.withAlphaComponent(0.4)
         cell.dateLabel.textAlignment = .right
+    }
+    
+    //[yyMMdd] -> [yy년 MM월 dd일] 형식 변환
+    func convertMagazineDate(date: String) -> String {
+        //yyMMdd 형식 DateFormatter 변수 inputDate 생성
+        let inputDate = DateFormatter()
+        inputDate.dateFormat = "yyMMdd"
+        
+        //inputDate를 Date 타입으로 변환하여 date에 대입
+        guard let date = inputDate.date(from: date) else {
+            print("convertMagazineDate 속 date 변환 실패")
+            return ""
+        }
+        
+        //yyMMdd 형식 DateFormatter 변수 outputDate 생성
+        //위에서 Date 타입으로 바꾼 date, outputDate string에 대입하여 반환
+        let outputDate = DateFormatter()
+        outputDate.dateFormat = "yy년 MM월 dd일"
+        return outputDate.string(from: date)
     }
     
     
