@@ -9,7 +9,11 @@ import UIKit
 
 class ShoppingTableViewController: UITableViewController {
     
-    var shoppingList = ["그립톡 구매하기", "사이다 구매", "아이패드 케이스 최저가 알아보기", "양말"]
+    var shoppingList = ["그립톡 구매하기", "사이다 구매", "아이패드 케이스 최저가 알아보기", "양말"] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +49,9 @@ class ShoppingTableViewController: UITableViewController {
     func addButtonTapped(_ sender: UIButton) {
         print(#function, sender.tag)
     }
+    
+    
+    //MARK: - TableView 관련 함수
     
     //section 개수 설정
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -95,11 +102,25 @@ class ShoppingTableViewController: UITableViewController {
         
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function, indexPath.row)
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        tableView.reloadData()
+        let delete = UIContextualAction(style: .normal, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.shoppingList.remove(at: indexPath.row)
+            print("delete 실행 완료")
+            success(true)
+        }
+        delete.image = UIImage(systemName: "trash.fill")
+        delete.image?.withTintColor(.white)
+        delete.backgroundColor = .red
+        
+        return UISwipeActionsConfiguration(actions: [delete])
     }
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print(#function, indexPath.row)
+//        
+//        tableView.reloadData()
+//    }
     
     //HeaderCell textField 액션 함수
     @IBAction
