@@ -38,35 +38,29 @@ class TravelTableViewController: UITableViewController {
         cell.heartButton.setImage(UIImage(systemName: likeImage), for: .normal)
         cell.heartButton.tintColor = .red
         
-        cell.titleLabel.text = titleText
-        cell.titleLabel.font = .boldSystemFont(ofSize: 16)
+        cell.titleLabel.setLabelUI(titleText, font: .boldSystemFont(ofSize: 16))
         
-        cell.subtitleLabel.text = subtitleText
-        cell.subtitleLabel.numberOfLines = 2
-        cell.subtitleLabel.font = .systemFont(ofSize: 13, weight: .regular)
-        cell.subtitleLabel.textColor = .black.withAlphaComponent(0.8)
+        cell.subtitleLabel.setLabelUI(subtitleText,
+                                      font: .systemFont(ofSize: 13, weight: .regular),
+                                      textColor: .black.withAlphaComponent(0.8),
+                                      numberOfLines: 2)
         
         let starCnt = calculatorStar(grade: grade)
         let reviewCnt = (1...100).randomElement() ?? 0
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         let saveCnt = numberFormatter.string(for: save) ?? "0"
-        cell.etcLabel.text = "\(starCnt) (\(reviewCnt)) 저장 \(saveCnt)"
-        cell.etcLabel.font = .systemFont(ofSize: 10, weight: .regular)
-        cell.etcLabel.textColor = .black.withAlphaComponent(0.4)
-        
-        [cell.titleLabel, cell.subtitleLabel, cell.etcLabel].forEach {i in
-            i?.textAlignment = .left
-        }
-        
+        cell.etcLabel.setLabelUI("\(starCnt) (\(reviewCnt)) 저장 \(saveCnt)",
+                                 font: .systemFont(ofSize: 10, weight: .regular),
+                                 textColor: .black.withAlphaComponent(0.4))
     }
     
     func setAdCellUI(cell: AdTableViewCell) {
-        let titleTextArr = ["하와이 여행을 가고 싶다면? 수업이 있는데 떠나실 생각은 아니시죠?", "도쿄 여행 예약은? Xcode로 직접 만드시면 되겠네요!"].randomElement() ?? "adTitleLabel error"
-        cell.adTitleLabel.text = titleTextArr
-        cell.adTitleLabel.font = .systemFont(ofSize: 14, weight: .heavy)
-        cell.adTitleLabel.textAlignment = .center
-        cell.adTitleLabel.numberOfLines = 2
+        let randomTitleText = ["하와이 여행을 가고 싶다면? 수업이 있는데 떠나실 생각은 아니시죠?", "도쿄 여행 예약은? Xcode로 직접 만드시면 되겠네요!"].randomElement() ?? "adTitleLabel error"
+        cell.adTitleLabel.setLabelUI(randomTitleText,
+                                     font: .systemFont(ofSize: 14, weight: .heavy),
+                                     alignment: .center,
+                                     numberOfLines: 2)
         
         let backgroundColor = [UIColor(resource: .adBackground1), UIColor(resource: .adBackground2)].randomElement() ?? .blue
         cell.adBackgroundView.backgroundColor = backgroundColor
@@ -82,6 +76,7 @@ class TravelTableViewController: UITableViewController {
         cell.adButton.isUserInteractionEnabled = false //인터렉션 잠금
     }
     
+    //평점 기준 별 개수 반환 함수
     func calculatorStar(grade: Double) -> String {
         let num = round(grade) //소수점 반올림
         switch num {
@@ -138,6 +133,7 @@ class TravelTableViewController: UITableViewController {
         let likeImage = (travelRow.like ?? false) ? "heart.fill" : "heart"
         
         setTravelCellUI(cell: travelCell, image: image, titleText: titleText, subtitleText: subtitleText, grade: grade, likeImage: likeImage, save: save)
+        
         
         //AdCell 관련
         setAdCellUI(cell: adCell)
