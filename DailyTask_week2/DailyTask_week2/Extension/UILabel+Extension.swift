@@ -17,5 +17,18 @@ extension UILabel {
         self.textAlignment = .left
     }
     
+    func setLabelUI(_ text: String,
+                    font: UIFont,
+                    textColor: UIColor = .black,
+                    alignment: NSTextAlignment = .left,
+                    numberOfLines: Int = 1)
+    {
+        self.text = text
+        self.font = font
+        self.textColor = textColor
+        self.textAlignment = alignment
+        self.numberOfLines = numberOfLines
+    }
+    
 }
 
