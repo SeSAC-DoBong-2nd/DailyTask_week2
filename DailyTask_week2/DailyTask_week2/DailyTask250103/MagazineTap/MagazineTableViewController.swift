@@ -26,20 +26,18 @@ class MagazineTableViewController: UITableViewController {
         cell.posterImageView.contentMode = .scaleAspectFill
         cell.posterImageView.layer.cornerRadius = 20
         
-        cell.titleLabel.text = title
-        cell.titleLabel.font = .boldSystemFont(ofSize: 20)
-        cell.titleLabel.textAlignment = .left
-        cell.titleLabel.numberOfLines = 2
+        cell.titleLabel.setLabelUI(title,
+                                   font: .boldSystemFont(ofSize: 20),
+                                   numberOfLines: 2)
         
-        cell.subtitleLabel.text = subtitle
-        cell.subtitleLabel.font = .systemFont(ofSize: 12, weight: .regular)
-        cell.subtitleLabel.textColor = .black.withAlphaComponent(0.4)
-        cell.subtitleLabel.textAlignment = .left
+        cell.subtitleLabel.setLabelUI(subtitle,
+                                      font: .systemFont(ofSize: 12, weight: .regular),
+                                      textColor: .black.withAlphaComponent(0.4))
         
-        cell.dateLabel.text = convertMagazineDate(date: date)
-        cell.dateLabel.font = .systemFont(ofSize: 10, weight: .regular)
-        cell.dateLabel.textColor = .black.withAlphaComponent(0.4)
-        cell.dateLabel.textAlignment = .right
+        cell.dateLabel.setLabelUI(convertMagazineDate(date: date),
+                                  font: .systemFont(ofSize: 10, weight: .regular),
+                                  textColor: .black.withAlphaComponent(0.4),
+                                  alignment: .right)
     }
     
     //[yyMMdd] -> [yy년 MM월 dd일] 형식 변환
