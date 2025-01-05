@@ -144,11 +144,19 @@ class TravelTableViewController: UITableViewController {
         
         
         let isAd = travelRow.ad ? true : false
+        let noSeparatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
         
         switch isAd {
         case true:
+            //adCell일 경우 cell 하단 separator 표시 x
+            adCell.separatorInset = noSeparatorInset
             return adCell
         case false:
+            //현재 indexPath.row가 travelList index의 마지막 원소가 아니고,
+            //현재 indexPath.row 이후 나올 cell이 adCell일 경우 cell 하단 separator 표시 x
+            if indexPath.row != (travelList.count-1) && travelList[indexPath.row + 1].ad == true {
+                travelCell.separatorInset = noSeparatorInset
+            }
             return travelCell
         }
     }
