@@ -113,34 +113,33 @@ class TravelTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let travelCell = tableView.dequeueReusableCell(withIdentifier: "TravelTableViewCell") as! TravelTableViewCell
         let adCell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell") as! AdTableViewCell
-        
-        //TravelCell 관련
-        travelCell.heartButton.tag = indexPath.row
-        travelCell.heartButton.addTarget(self, action: #selector(heartButtonTapped), for: .touchUpInside)
         let travelRow = travelList[indexPath.row]
-        let image = travelRow.travel_image
-        let titleText = travelRow.title
-        let subtitleText = travelRow.description
-        let grade = travelRow.grade // 평점
-        let save = travelRow.save
-        let likeImage = (travelRow.like ?? false) ? "heart.fill" : "heart"
-        
-        setTravelCellUI(cell: travelCell, image: image, titleText: titleText, subtitleText: subtitleText, grade: grade, likeImage: likeImage, save: save)
-        
-        
-        //AdCell 관련
-        setAdCellUI(cell: adCell)
-        
         
         let isAd = travelRow.ad ? true : false
         let noSeparatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
         
         switch isAd {
         case true:
+            //adCell UI 함수
+            setAdCellUI(cell: adCell)
+            
             //adCell일 경우 cell 하단 separator 표시 x
             adCell.separatorInset = noSeparatorInset
             return adCell
         case false:
+            travelCell.heartButton.tag = indexPath.row
+            travelCell.heartButton.addTarget(self, action: #selector(heartButtonTapped), for: .touchUpInside)
+            
+            let image = travelRow.travel_image
+            let titleText = travelRow.title
+            let subtitleText = travelRow.description
+            let grade = travelRow.grade // 평점
+            let save = travelRow.save
+            let likeImage = (travelRow.like ?? false) ? "heart.fill" : "heart"
+            
+            //travelCell UI 함수
+            setTravelCellUI(cell: travelCell, image: image, titleText: titleText, subtitleText: subtitleText, grade: grade, likeImage: likeImage, save: save)
+            
             //현재 indexPath.row가 travelList index의 마지막 원소가 아니고,
             //현재 indexPath.row 이후 나올 cell이 adCell일 경우 cell 하단 separator 표시 x
             if indexPath.row != (travelList.count-1) && travelList[indexPath.row + 1].ad == true {
