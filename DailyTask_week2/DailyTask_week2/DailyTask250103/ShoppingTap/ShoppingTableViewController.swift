@@ -43,9 +43,6 @@ class ShoppingTableViewController: UITableViewController {
         cell.checkButton.setImage(UIImage(systemName: checkImage), for: .normal)
         cell.checkButton.tintColor = .black
         
-        cell.shoppingLabel.font = .systemFont(ofSize: 14, weight: .medium)
-        cell.shoppingLabel.textAlignment = .left
-        
         cell.starButton.setImage(UIImage(systemName: starImage), for: .normal)
         cell.starButton.tintColor = .black
     }
@@ -107,10 +104,12 @@ class ShoppingTableViewController: UITableViewController {
         setShoppingHeaderCell(cell: headerCell)
         headerCell.addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         
+        let shoppingRow = shoppingList[indexPath.row]
+        
         let mainCell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell") as! ShoppingTableViewCell
-        let checkStateImage = shoppingList[indexPath.row].isChecked ?
+        let checkStateImage = shoppingRow.isChecked ?
             "checkmark.square.fill" : "checkmark.square"
-        let starStateImage = shoppingList[indexPath.row].isStared ?
+        let starStateImage = shoppingRow.isStared ?
             "star.fill" : "star"
         setShoppingMainCell(cell: mainCell, checkImage: checkStateImage, starImage: starStateImage)
         
@@ -119,7 +118,7 @@ class ShoppingTableViewController: UITableViewController {
         case 0:
             return headerCell
         case 1:
-            mainCell.shoppingLabel.text = shoppingList[indexPath.row].shoppingToDo
+            mainCell.shoppingLabel.setLabelUI(shoppingRow.shoppingToDo, font: .systemFont(ofSize: 14, weight: .medium))
             mainCell.checkButton.tag = indexPath.row
             mainCell.checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
             
@@ -130,7 +129,6 @@ class ShoppingTableViewController: UITableViewController {
         default:
             return UITableViewCell()
         }
-        
     }
     
     //우측 스와이프 관련 함수
