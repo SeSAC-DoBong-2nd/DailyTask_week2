@@ -31,9 +31,7 @@ class TravelTableViewController: UITableViewController {
             return
         }
         
-        cell.travelImageView.kf.setImage(with: URL(string: image))
-        cell.travelImageView.contentMode = .scaleAspectFill
-        cell.travelImageView.layer.cornerRadius = 8
+        cell.travelImageView.setImageViewUIWithKF(imageURL: image, cornerRadius: 8)
         
         cell.heartButton.setImage(UIImage(systemName: likeImage), for: .normal)
         cell.heartButton.tintColor = .red

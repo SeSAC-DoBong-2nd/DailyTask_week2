@@ -22,9 +22,7 @@ class MagazineTableViewController: UITableViewController {
     }
     
     func setMagazineCellUI(cell: MagazineTableViewCell, image: String, title: String, subtitle: String, date: String) {
-        cell.posterImageView.kf.setImage(with: URL(string: image))
-        cell.posterImageView.contentMode = .scaleAspectFill
-        cell.posterImageView.layer.cornerRadius = 20
+        cell.posterImageView.setImageViewUIWithKF(imageURL: image, cornerRadius: 20)
         
         cell.titleLabel.setLabelUI(title,
                                    font: .boldSystemFont(ofSize: 20),
