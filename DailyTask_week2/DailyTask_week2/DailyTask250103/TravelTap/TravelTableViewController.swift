@@ -33,8 +33,7 @@ class TravelTableViewController: UITableViewController {
         
         cell.travelImageView.setImageViewUIWithKF(imageURL: image, cornerRadius: 8)
         
-        cell.heartButton.setImage(UIImage(systemName: likeImage), for: .normal)
-        cell.heartButton.tintColor = .red
+        cell.heartButton.setButtonUIWithImage(image: likeImage, tintColor: .red)
         
         cell.titleLabel.setLabelUI(titleText, font: .boldSystemFont(ofSize: 16))
         
@@ -65,12 +64,8 @@ class TravelTableViewController: UITableViewController {
         cell.adBackgroundView.layer.cornerRadius = 10
         cell.adBackgroundView.layer.borderWidth = 0
         
-        cell.adButton.setTitle("AD", for: .normal)
+        cell.adButton.setButtonUIWithTitle(title: "AD", backgroundColor: .white, cornerRadius: 8)
         cell.adButton.titleLabel?.font = .systemFont(ofSize: 10)
-        cell.adButton.setTitleColor(.black, for: .normal)
-        cell.adButton.backgroundColor = .white
-        cell.adButton.layer.cornerRadius = 8
-        cell.adButton.layer.borderWidth = 0
         cell.adButton.isUserInteractionEnabled = false //인터렉션 잠금
     }
     

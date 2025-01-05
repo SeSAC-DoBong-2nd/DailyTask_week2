@@ -28,10 +28,7 @@ class ShoppingTableViewController: UITableViewController {
         cell.shoppingTextField.placeholder = "무엇을 구매하실 건가요?"
         cell.shoppingTextField.borderStyle = .none
         
-        cell.addButton.setTitle("추가", for: .normal)
-        cell.addButton.backgroundColor = .addButton0103
-        cell.addButton.layer.cornerRadius = 10
-        cell.addButton.setTitleColor(.black, for: .normal)
+        cell.addButton.setButtonUIWithTitle(title: "추가", backgroundColor: .addButton0103, cornerRadius: 10)
     }
     
     func setShoppingMainCell(cell: ShoppingTableViewCell,
@@ -40,11 +37,9 @@ class ShoppingTableViewController: UITableViewController {
     {
         cell.contentView.backgroundColor = .background0103
         
-        cell.checkButton.setImage(UIImage(systemName: checkImage), for: .normal)
-        cell.checkButton.tintColor = .black
+        cell.checkButton.setButtonUIWithImage(image: checkImage, tintColor: .black)
         
-        cell.starButton.setImage(UIImage(systemName: starImage), for: .normal)
-        cell.starButton.tintColor = .black
+        cell.starButton.setButtonUIWithImage(image: starImage, tintColor: .black)
     }
     
     @objc
