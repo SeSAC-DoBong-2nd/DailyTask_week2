@@ -112,7 +112,7 @@ class MainHomeTabViewController: UIViewController {
     }
     
     @IBAction func playBtnAction(_ sender: UIButton) {
-        let moviewPosterArr = [UIImage(resource: .범죄도시3), UIImage(resource: .밀수), UIImage(resource: .서울의봄), UIImage(resource: ._1), UIImage(resource: ._2), UIImage(resource: ._3), UIImage(resource: ._4), UIImage(resource: ._5)]
+        let moviewPosterArr = [UIImage(resource: ._3), UIImage(resource: ._3), UIImage(resource: ._3), UIImage(resource: ._1), UIImage(resource: ._2), UIImage(resource: ._3), UIImage(resource: ._4), UIImage(resource: ._5)]
         [mainPosterImageVIew, firstBottomImageView, secondBottomImageView, thirdBottomImageVIew].forEach({ i in
             i?.image = moviewPosterArr.randomElement()
         })
