@@ -19,6 +19,8 @@ extension UIButton {
     func setButtonUIWithImage(image: String, tintColor: UIColor) {
         self.setImage(UIImage(systemName: image), for: .normal)
         self.tintColor = tintColor
+        self.backgroundColor = .clear
+        self.imageView?.backgroundColor = .clear
     }
     
 }
