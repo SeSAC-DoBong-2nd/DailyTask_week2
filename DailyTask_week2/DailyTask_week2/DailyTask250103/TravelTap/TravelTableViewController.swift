@@ -8,6 +8,7 @@
 import UIKit
 
 import Kingfisher
+import SnapKit
 
 class TravelTableViewController: UITableViewController {
     
@@ -32,6 +33,7 @@ class TravelTableViewController: UITableViewController {
         }
         
         cell.travelImageView.setImageViewUIWithKF(imageURL: image, cornerRadius: 8)
+        cell.travelImageView.backgroundColor = .black
         
         cell.heartButton.setButtonUIWithImage(image: likeImage, tintColor: .red)
         
@@ -41,6 +43,11 @@ class TravelTableViewController: UITableViewController {
                                       font: .systemFont(ofSize: 13, weight: .regular),
                                       textColor: .black.withAlphaComponent(0.8),
                                       numberOfLines: 2)
+        
+//        cell.heartButton.backgroundColor = .white
+//        cell.heartButton.imageView?.backgroundColor = .white
+//        cell.heartButton.layer.backgroundColor = UIColor.white.cgColor
+        
         
         let starCnt = calculatorStar(grade: grade)
         let reviewCnt = (1...100).randomElement() ?? 0
